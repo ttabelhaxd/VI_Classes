@@ -1,0 +1,119 @@
+<!--
+
+Google Chart
+
+Pie Chart Example
+
+Autor: P. Dias
+
+Data: July 2018
+
+-->
+
+<html>
+
+<head>
+
+<!-- Load the AJAX API-->
+<meta charset="utf-8"/>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback( drawChart );
+
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+
+function drawChart( )
+{
+
+	// Create the data table.
+	var data = new google.visualization.DataTable( );
+
+
+	// First column
+	data.addColumn('string', 'Curricular year');
+
+	// Second column
+	data.addColumn('number', 'Number of Students');
+
+	data.addRows([
+				['1st year', 79],
+				['2nd year', 112],
+				['3rd year', 68],
+				['4th year', 62],
+				['5th year', 83]
+
+	]);
+
+	// Set chart configuration options
+	var piechart_options = {
+			title : 'UA - MIECT - Students by curricular year',
+			width : 800,
+			height : 400,
+			is3D : true, // puts a 3D effect on the pie chart
+	};
+
+	var barchart_options = {
+			title : 'UA - MIECT - Students by curricular year',
+			width : 800,
+			height : 400,
+			hAxis: { minValue: 0 }, // horizontal axis configuration with minimum value
+			legend: { position: 'none' } // no legend
+	};
+
+	var columnchart_options = {
+			title : 'UA - MIECT - Students by curricular year',
+			width : 800,
+			height : 400,
+			vAxis: { minValue: 0 }, // vertical axis configuration with minimum value
+			legend: { position: 'none' } // no legend
+	};
+
+	var linechart_options = {
+			title : 'UA - MIECT - Students by curricular year',
+			width : 800,
+			height : 400,
+			vAxis: { minValue: 0 }, // vertical axis configuration with minimum value
+			legend: { position: 'none' } // no legend
+	};
+
+	// Instantiate the pie chart.
+	var pie_chart = new google.visualization.PieChart( document.getElementById('chart_div') );
+	debugger;
+	var bar_chart = new google.visualization.BarChart( document.getElementById('chart_div2') );
+	debugger;
+	var column_chart = new google.visualization.ColumnChart( document.getElementById('chart_div3') );
+	debugger;
+	var line_chart = new google.visualization.LineChart( document.getElementById('chart_div4') );
+	debugger;
+
+	// Draw the chart, passing in some configuration options.
+	pie_chart.draw(data, piechart_options);
+	bar_chart.draw(data, barchart_options);
+	column_chart.draw(data, columnchart_options);
+	line_chart.draw(data, linechart_options);
+
+} // drawChart( )
+
+</script>
+</head>
+
+<body>
+<!--Div that will hold the pie chart-->
+<span style="display:flex; flex-direction:row; height: 50%;">
+	<div id="chart_div" style="width:50%;"></div>
+	<div id="chart_div2" style="width:50%;"></div>
+</span>
+<span style="display:flex; flex-direction:row; height: 50%;">
+	<div id="chart_div3" style="width:50%"></div>
+	<div id="chart_div4" style="width:50%"></div>
+</span>
+</body>
+
+</html>
